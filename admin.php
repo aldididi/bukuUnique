@@ -17,7 +17,12 @@ include('db.php');
 </head>
 
 <body>
-
+	<?php
+	session_start();
+	if ($_SESSION['status'] != "login") {
+		header("location:../index.php?pesan=belum_login");
+	}
+	?>
 	<div class="container jumbotron">
 		<h4 class="text-center">
 			Admin Books Mentor
@@ -27,10 +32,10 @@ include('db.php');
 		</h4>
 		<table class="table table-bordered table-striped table-hover">
 			<tr>
-				<th class="text-center">ID</th>
+				<th class="text-center">ISBN</th>
 				<th class="text-center">Name</th>
 				<th class="text-center">description</th>
-				<th class="text-center">Phone</th>
+				<th class="text-center">price</th>
 				<th class="text-center">Address</th>
 				<th class="text-center">Picture</th>
 				<th class="text-center">Edit</th>
@@ -46,7 +51,7 @@ include('db.php');
 				$id = $row['id'];
 				$name = $row['name'];
 				$description = $row['description'];
-				$phone = $row['phone'];
+				$price = $row['price'];
 				$address = $row['address'];
 				$image = $row['image'];
 
@@ -56,7 +61,7 @@ include('db.php');
 				<td class='text-center'>$id</td>
 				<td class='text-center'>$name</td>
 				<td class='text-center'>$description</td>
-				<td class='text-center'>$phone</td>
+				<td class='text-center'>$price</td>
 				<td class='text-center'>$address</td>
 				<td class='text-center'><img src='images/$image' style='width:50px; height:50px;'></td>
 				<td class='text-center'>
@@ -86,6 +91,9 @@ include('db.php');
 
 
 		</table>
+		<a href="logout.php">
+			<button type="button" class="btn btn-danger" onclick="location.logout.php">Logout</button>
+		</a>
 	</div>
 
 
@@ -123,8 +131,8 @@ include('db.php');
 						</div>
 
 						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" name="phone" class="form-control" placeholder="Your Phone.....">
+							<label>price</label>
+							<input type="text" name="price" class="form-control" placeholder="Price.....">
 						</div>
 
 						<div class="form-group">
@@ -203,7 +211,7 @@ include('db.php');
 		$id = $row['id'];
 		$name = $row['name'];
 		$description = $row['description'];
-		$phone = $row['phone'];
+		$price = $row['price'];
 		$address = $row['address'];
 		$image = $row['image'];
 		echo "
@@ -233,8 +241,8 @@ include('db.php');
         	</div>
 
         	<div class='form-group'>
-        		<label>Phone</label>
-        		<input type='text' name='phone' class='form-control' value='$phone'>
+        		<label>price</label>
+        		<input type='text' name='price' class='form-control' value='$price'>
         	</div>
 
         	<div class='form-group'>

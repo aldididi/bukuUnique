@@ -25,8 +25,9 @@ if (isset($_POST['submit'])) {
 	$run_data = mysqli_query($con, $insert_data);
 
 	if ($run_data) {
-		header('location:index.php');
+		header('location:admin.php');
 	} else {
-		echo "Data not insert";
+		$failure = "Unable to INSERT into DB: " . mysqli_error($con);
+		//echo "Data not insert";
 	}
 }

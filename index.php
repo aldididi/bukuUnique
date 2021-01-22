@@ -110,6 +110,7 @@ include('db.php');
                     <h4 class="card-title">
                       <a href="#"><?php echo $row['name']; ?></a>
                     </h4>
+                    <h5><?php echo "Rp." . $row['price']; ?></h5>
                     <p class="card-text"><?php echo $row['description']; ?></p>
                   </div>
                   <div class="card-footer">
@@ -191,7 +192,7 @@ include('db.php');
           <h4 class="modal-title text-center">Login</h4>
         </div>
         <div class="modal-body">
-          <form action="cek_login.php" method="POST" enctype="multipart/form-data">
+          <form method="POST" action="cek_login.php" enctype="multipart/form-data">
 
 
             <div class="form-group">
